@@ -1,0 +1,2 @@
+CompileFlags:
+  CompilationDatabase: firmware/nucleo-f446re/build/Debug

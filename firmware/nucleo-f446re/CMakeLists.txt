@@ -57,6 +57,8 @@ target_sources(${PROJECT_NAME} PRIVATE
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/FreeRTOS/Source/stream_buffer.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/FreeRTOS/Source/portable/MemMang/heap_4.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../drivers/hts221.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../driver_tasks/hts221_task.cpp"
 )
 
 # Add include directories
@@ -67,6 +69,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/CMSIS/Device/ST/STM32F4xx/Include"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/FreeRTOS/Source/include"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../drivers"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../driver_tasks"
 )
 
 # Compiler options
