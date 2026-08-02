@@ -1,0 +1,19 @@
+---
+# Only meant to run against firmware/drivers, firmware/driver_tasks, and
+# firmware/nucleo-f446re/Src/main.c — vendored HAL/CMSIS code under
+# firmware/third_party is out of scope (see CI workflow filtering).
+Checks: >
+  -*,
+  bugprone-*,
+  performance-*,
+  readability-*,
+  modernize-use-nullptr,
+  modernize-use-override,
+  clang-analyzer-*,
+  -readability-magic-numbers,
+  -readability-identifier-length,
+  -bugprone-easily-swappable-parameters
+
+WarningsAsErrors: ''
+HeaderFilterRegex: '(drivers|driver_tasks)/.*'
+FormatStyle: file

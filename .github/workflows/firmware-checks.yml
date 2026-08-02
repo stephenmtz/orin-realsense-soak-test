@@ -1,0 +1,71 @@
+name: Firmware Checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'firmware/**'
+      - '.clang-format'
+      - '.clang-tidy'
+      - '.github/workflows/firmware-checks.yml'
+  pull_request:
+    paths:
+      - 'firmware/**'
+      - '.clang-format'
+      - '.clang-tidy'
+      - '.github/workflows/firmware-checks.yml'
+
+jobs:
+  format:
+    name: clang-format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check formatting (drivers, driver_tasks, main.c)
+        run: |
+          FILES=$(find firmware/drivers firmware/driver_tasks -type f \( -name '*.c' -o -name '*.h' -o -name '*.cpp' -o -name '*.hpp' \) 2>/dev/null; \
+                  echo firmware/nucleo-f446re/Src/main.c)
+          if [ -z "$FILES" ]; then
+            echo "No files to check yet."
+            exit 0
+          fi
+          clang-format --dry-run --Werror $FILES
+
+  build:
+    name: cmake build (arm-none-eabi)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ARM toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi ninja-build cmake
+      - name: Configure
+        working-directory: firmware/nucleo-f446re
+        run: cmake --preset Debug
+      - name: Build
+        working-directory: firmware/nucleo-f446re
+        run: cmake --build --preset Debug
+
+  tidy:
+    name: clang-tidy (drivers, driver_tasks)
+    runs-on: ubuntu-latest
+    needs: build
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ARM toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi ninja-build cmake
+      - name: Configure (generates compile_commands.json)
+        working-directory: firmware/nucleo-f446re
+        run: cmake --preset Debug
+      - name: Run clang-tidy
+        run: |
+          FILES=$(find firmware/drivers firmware/driver_tasks -type f \( -name '*.c' -o -name '*.cpp' \) 2>/dev/null)
+          if [ -z "$FILES" ]; then
+            echo "No files to check yet."
+            exit 0
+          fi
+          clang-tidy -p firmware/nucleo-f446re/build/Debug $FILES

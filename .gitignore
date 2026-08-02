@@ -1,1 +1,6 @@
 target/
+firmware/build/
+firmware/nucleo-f446re/build/
+firmware/nucleo-f446re/.settings/
+CMakeUserPresets.json
+.vscode/
