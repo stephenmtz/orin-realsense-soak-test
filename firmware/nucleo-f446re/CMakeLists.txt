@@ -57,6 +57,7 @@ target_sources(${PROJECT_NAME} PRIVATE
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/Src/stm32f4xx_it.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/Src/freertos_hooks.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/FreeRTOS/Source/tasks.c"
@@ -109,3 +110,6 @@ target_link_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE
   # Add additional linker libraries here
 )
+
+# Flash target: `cmake --build build --target flash`
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/flash.cmake)

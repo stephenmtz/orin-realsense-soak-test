@@ -17,7 +17,7 @@
           "path": "Src/sysmem.c"
         },
         {
-          "path": "Src/main.c"
+          "path": "Src/main.cpp"
         },
         {
           "path": "Src/startup_stm32f446xx.S"
@@ -130,7 +130,7 @@
           "path": "Src/sysmem.c"
         },
         {
-          "path": "Src/main.c"
+          "path": "Src/main.cpp"
         },
         {
           "path": "Src/startup_stm32f446xx.S"

@@ -74,4 +74,5 @@ namespace drivers {
             template <typename T>
             std::optional<T> readMultReg(RegAddr start_reg_addr, T bitMask);
     }; // class HTS221
-} // namespace drivers 
+} // namespace drivers
+ 
