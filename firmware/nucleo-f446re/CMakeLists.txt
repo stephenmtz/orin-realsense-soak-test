@@ -16,7 +16,10 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/gcc-arm-none-eabi.cmake)
 project(nucleo-f446re)
 
 # Enable CMake support for ASM and C/CPP languages
-enable_language(C ASM)
+enable_language(C CXX ASM)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(PROJECT_NAME nucleo-f446re)
 
@@ -27,6 +30,13 @@ add_executable(${PROJECT_NAME})
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/flags.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/components.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/files.cmake)
+
+# cmake/flags.cmake is a CubeMX-managed/regenerated file and hardcodes
+# -std=gnu11 even for CXX sources. Appended here (after the include above)
+# so this -std wins on the compiler command line without editing that file.
+target_compile_options(${PROJECT_NAME} PRIVATE
+  $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++17>
+)
 
 # Add sources to executable/library
 target_sources(${PROJECT_NAME} PRIVATE

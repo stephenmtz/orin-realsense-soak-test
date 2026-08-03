@@ -1,5 +1,4 @@
 #pragma once 
-#include "stm32f4xx_hal_i2c.h"
 #include <cstdint> 
 #include <optional> 
 
@@ -21,7 +20,9 @@ namespace drivers {
                 kSevenHtz = 0x02, 
                 kTwelveHtz = 0x03, 
             };
-            HTS221(I2C_HandleTypeDef i2c, RegVal addr); 
+
+            HTS221(I2C_HandleTypeDef *i2c, RegVal addr);
+            
             bool init(); 
             bool whoAmI(); 
             bool readTemp(float &outC); 
@@ -33,7 +34,7 @@ namespace drivers {
             
 
         private: 
-            I2C_HandleTypeDef i2c; 
+            I2C_HandleTypeDef *i2c_;
             RegAddr addr_;
             static constexpr RegAddr kWhoAmI = 0x0F;
             static constexpr RegAddr kAvConf = 0x10; 
