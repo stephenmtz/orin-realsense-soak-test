@@ -4,3 +4,5 @@ firmware/nucleo-f446re/build/
 firmware/nucleo-f446re/.settings/
 CMakeUserPresets.json
 .vscode/
+telemetry/.venv/
+telemetry/.env
