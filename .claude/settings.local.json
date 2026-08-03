@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sI https://raw.githubusercontent.com/STMicroelectronics/stm32f4xx_hal_driver/master/Inc/stm32f4xx_hal_tim.h --max-time 8)",
+      "Bash(curl -sf -o Inc/stm32f4xx_hal_tim.h https://raw.githubusercontent.com/STMicroelectronics/stm32f4xx_hal_driver/master/Inc/stm32f4xx_hal_tim.h)",
+      "Bash(curl -sf -o Inc/stm32f4xx_hal_tim_ex.h https://raw.githubusercontent.com/STMicroelectronics/stm32f4xx_hal_driver/master/Inc/stm32f4xx_hal_tim_ex.h)",
+      "Bash(curl -sf -o Src/stm32f4xx_hal_tim.c https://raw.githubusercontent.com/STMicroelectronics/stm32f4xx_hal_driver/master/Src/stm32f4xx_hal_tim.c)",
+      "Bash(curl -sf -o Src/stm32f4xx_hal_tim_ex.c https://raw.githubusercontent.com/STMicroelectronics/stm32f4xx_hal_driver/master/Src/stm32f4xx_hal_tim_ex.c)"
+    ]
+  }
+}

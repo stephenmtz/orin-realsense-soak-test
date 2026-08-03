@@ -57,6 +57,8 @@ target_sources(${PROJECT_NAME} PRIVATE
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/Src/stm32f4xx_it.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/Src/freertos_hooks.c"
