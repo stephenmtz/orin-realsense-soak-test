@@ -71,7 +71,9 @@ target_sources(${PROJECT_NAME} PRIVATE
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../third_party/FreeRTOS/Source/portable/MemMang/heap_4.c"
   "${CMAKE_CURRENT_SOURCE_DIR}/../drivers/hts221.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../drivers/mosfet.cpp"
   "${CMAKE_CURRENT_SOURCE_DIR}/../driver_tasks/hts221_task.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../driver_tasks/heater_task.cpp"
 )
 
 # Add include directories
