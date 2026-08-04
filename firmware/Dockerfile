@@ -10,3 +10,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /workspace
 # (TODO) building on pi for portability but build on desktop -> upload image to google bucket 
+# could create a workflow to build the file too... and then push to bucket but we shall see
