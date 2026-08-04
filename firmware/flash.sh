@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-# Build the STM32 firmware and flash it via ST-Link, using Docker so no
-# local toolchain (arm-none-eabi-gcc, cmake, ninja, openocd) is needed.
-#
-# Usage: ./flash.sh [Debug|Release]
 
 set -euo pipefail
 

@@ -16,6 +16,12 @@ constexpr TickType_t kPollPeriod = pdMS_TO_TICKS(1000);
 
 SemaphoreHandle_t g_readingMutex = nullptr;
 HTS221Reading g_latestReading = {};
+TickType_t g_phaseEndTick = 0; 
+
+// Adding the heater element invalidates the readings but humidity in the chamber is 
+enum class HeaterPhase { kIdle, kHeating, kSettling };
+HeaterPhase g_heaterPhase = HeaterPhase::kIdle; 
+
 bool g_hasReading = false;
 
 void hts221Task(void *params) {
@@ -47,6 +53,7 @@ bool hts221TaskStart(I2C_HandleTypeDef *i2c, uint8_t i2c_addr) {
     if (g_readingMutex == nullptr) {
         return false;
     }
+    drivers::HTS221 *g_sensor = nullptr; 
 
     return xTaskCreate(hts221Task, "hts221", kTaskStackWords, &sensor, kTaskPriority, nullptr) == pdPASS;
 }
@@ -63,6 +70,7 @@ std::optional<HTS221Reading> hts221TaskLatestReading() {
     }
     xSemaphoreGive(g_readingMutex);
     return result;
+
 }
 
 } // namespace driver_tasks
